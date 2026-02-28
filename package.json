@@ -62,7 +62,12 @@
       "category": "public.app-category.developer-tools",
       "target": [
         { "target": "dmg", "arch": ["arm64", "x64"] }
-      ]
+      ],
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "entitlements.mac.plist",
+      "entitlementsInherit": "entitlements.mac.plist",
+      "notarize": true
     },
     "dmg": {
       "title": "Claude Lens ${version}"
