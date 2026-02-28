@@ -2,6 +2,10 @@
 <img width="1329" height="1351" alt="image" src="https://github.com/user-attachments/assets/84fc0f30-9f19-4f54-9e5f-cb131f5bb968" />
 
 
+https://github.com/user-attachments/assets/c0b26974-7e09-4cea-b2b5-086c5720f133
+
+
+
 **Local observability dashboard for Claude & AI developer tooling.**
 
 See what's configured, what's running, and what's connected — all from one place.
