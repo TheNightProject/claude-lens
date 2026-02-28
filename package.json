@@ -50,7 +50,10 @@
     "directories": {
       "output": "dist-electron"
     },
-    "asar": false,
+    "asar": true,
+    "asarUnpack": [
+      "**/*.node"
+    ],
     "files": [
       "electron/**",
       "server/**",
