@@ -35,17 +35,21 @@ It also scans for **project-level** `CLAUDE.md` files and `.claude/` directories
 
 ---
 
-## Quick Start
+## Install
+
+### Homebrew (macOS)
 
 ```bash
-# Clone
-git clone https://github.com/thenightproject/claude-lens.git
+brew tap TheNightProject/tap
+brew install --cask claude-lens
+```
+
+### From source
+
+```bash
+git clone https://github.com/TheNightProject/claude-lens.git
 cd claude-lens
-
-# Install
 npm install
-
-# Run
 npm run dev
 ```
 
