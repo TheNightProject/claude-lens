@@ -1,4 +1,6 @@
 # ⬡ claude-lens
+<img width="1329" height="1351" alt="image" src="https://github.com/user-attachments/assets/84fc0f30-9f19-4f54-9e5f-cb131f5bb968" />
+
 
 **Local observability dashboard for Claude & AI developer tooling.**
 
