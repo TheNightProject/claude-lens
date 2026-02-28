@@ -52,6 +52,8 @@
     },
     "asar": true,
     "asarUnpack": [
+      "server/**",
+      "dist/**",
       "**/*.node"
     ],
     "files": [

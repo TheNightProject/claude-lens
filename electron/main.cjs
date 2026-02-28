@@ -6,11 +6,21 @@ const http = require('http');
 const PORT = 3891;
 let serverProcess = null;
 let mainWindow = null;
+let serverReady = false;
+
+// Prevent multiple instances
+const gotTheLock = app.requestSingleInstanceLock();
+if (!gotTheLock) {
+  app.quit();
+}
 
 function getServerPath() {
-  return app.isPackaged
-    ? path.join(app.getAppPath(), 'server', 'index.js')
-    : path.join(__dirname, '..', 'server', 'index.js');
+  if (app.isPackaged) {
+    // Use the unpacked path since the server is an ESM module spawned as a child process
+    // and Node's ESM loader doesn't support Electron's asar virtual paths
+    return path.join(app.getAppPath() + '.unpacked', 'server', 'index.js');
+  }
+  return path.join(__dirname, '..', 'server', 'index.js');
 }
 
 function startServer() {
@@ -61,10 +71,18 @@ function createWindow() {
   mainWindow.on('closed', () => { mainWindow = null; });
 }
 
+app.on('second-instance', () => {
+  if (mainWindow) {
+    if (mainWindow.isMinimized()) mainWindow.restore();
+    mainWindow.focus();
+  }
+});
+
 app.whenReady().then(async () => {
   startServer();
   try {
     await waitForServer();
+    serverReady = true;
     createWindow();
   } catch (err) {
     console.error('Failed to start server:', err.message);
@@ -77,7 +95,7 @@ app.on('window-all-closed', () => {
 });
 
 app.on('activate', () => {
-  if (mainWindow === null) createWindow();
+  if (mainWindow === null && serverReady) createWindow();
 });
 
 app.on('will-quit', () => {
