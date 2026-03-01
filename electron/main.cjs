@@ -16,7 +16,7 @@ if (!gotTheLock) {
 
 function getServerPath() {
   return app.isPackaged
-    ? path.join(app.getAppPath(), 'server', 'index.js')
+    ? path.join(app.getAppPath() + '.unpacked', 'server', 'index.js')
     : path.join(__dirname, '..', 'server', 'index.js');
 }
 
