@@ -1,6 +1,6 @@
 {
   "name": "claude-lens",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Local observability dashboard for Claude & AI developer tooling",
   "type": "module",
   "main": "electron/main.cjs",
