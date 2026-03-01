@@ -1,11 +1,9 @@
-import express from 'express';
-import cors from 'cors';
-import { scanAll } from './scanner.js';
-import { getSystemInfo } from './system.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
+const express = require('express');
+const cors = require('cors');
+const { scanAll } = require('./scanner.js');
+const { getSystemInfo } = require('./system.js');
+const path = require('path');
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.CLAUDE_LENS_PORT || 3891;
 const isProduction = process.argv.includes('--production');

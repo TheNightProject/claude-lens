@@ -15,12 +15,9 @@ if (!gotTheLock) {
 }
 
 function getServerPath() {
-  if (app.isPackaged) {
-    // Use the unpacked path since the server is an ESM module spawned as a child process
-    // and Node's ESM loader doesn't support Electron's asar virtual paths
-    return path.join(app.getAppPath() + '.unpacked', 'server', 'index.js');
-  }
-  return path.join(__dirname, '..', 'server', 'index.js');
+  return app.isPackaged
+    ? path.join(app.getAppPath(), 'server', 'index.js')
+    : path.join(__dirname, '..', 'server', 'index.js');
 }
 
 function startServer() {

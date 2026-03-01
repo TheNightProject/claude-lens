@@ -1,6 +1,7 @@
-import fs from 'fs/promises';
-import path from 'path';
-import os from 'os';
+const fs = require('fs/promises');
+const path = require('path');
+const os = require('os');
+const { execSync } = require('child_process');
 
 const HOME = os.homedir();
 
@@ -252,7 +253,6 @@ async function scanProjectFiles() {
 
 // Scan for installed CLI tools
 async function scanInstalledTools() {
-  const { execSync } = await import('child_process');
   const tools = [
     { name: 'claude', command: 'claude --version', tool: 'Claude Code' },
     { name: 'cursor', command: 'cursor --version', tool: 'Cursor' },
@@ -275,7 +275,7 @@ async function scanInstalledTools() {
 }
 
 // Main scan function
-export async function scanAll() {
+async function scanAll() {
   const [configs, projects, tools] = await Promise.all([
     Promise.all(CONFIG_TARGETS.map(scanTarget)),
     scanProjectFiles(),
@@ -350,3 +350,5 @@ export async function scanAll() {
     tools,
   };
 }
+
+module.exports = { scanAll };

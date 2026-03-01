@@ -1,7 +1,7 @@
-import os from 'os';
-import { execSync } from 'child_process';
+const os = require('os');
+const { execSync } = require('child_process');
 
-export async function getSystemInfo() {
+async function getSystemInfo() {
   const platform = os.platform();
   const arch = os.arch();
 
@@ -35,3 +35,5 @@ export async function getSystemInfo() {
     },
   };
 }
+
+module.exports = { getSystemInfo };
